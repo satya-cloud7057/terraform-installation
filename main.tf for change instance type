@@ -1,0 +1,19 @@
+resource "aws_instance" "vm" {
+  for_each      = var.instances
+    ami           = "ami-0cc38fb663faa09c2"
+      instance_type = each.value
+        key_name      = "my-key"
+          tags = {
+              Name = "vm-${each.key}"
+                }
+                }
+
+                variable "instances" {
+                  default = {
+                      frontend = "t3.micro"
+                          backend  = "t3.small"
+                              database = "c7i-flex.large"
+
+  }
+
+}
